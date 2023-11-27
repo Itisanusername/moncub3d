@@ -1,6 +1,6 @@
 NAME			= 	cub3D
 
-SRCS_NAMES 		=	main.c extract.c
+SRCS_NAMES 		=	main.c extract.c check_map_content.c
 
 LIBFT			=	libft.a
 

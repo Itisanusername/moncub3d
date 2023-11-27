@@ -8,3 +8,4 @@
 # include <fcntl.h>
 
 char *ft_extract_file(char *path);
+int nswe_check(char **tab);

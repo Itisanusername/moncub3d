@@ -34,6 +34,7 @@ int ft_check_name(char *str)
 int main(int argc, char **argv)
 {
     char *s_line;
+    char **map;
 
     if (argc != 2 || (argc == 2 && (!argv[1] || !*argv[1])))
     {
@@ -52,5 +53,11 @@ int main(int argc, char **argv)
         return (0);
     }
     printf("%s\n", s_line);
+    map = ft_split(s_line, '\n');
+    if (!nswe_check(map))
+    {
+        printf("Invalid Map !\n");
+        return (1);
+    }
     return (0);
 }
