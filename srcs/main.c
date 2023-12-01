@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     }
     printf("%s\n", s_line);
     map = ft_split(s_line, '\n');
-    if (!nswe_check(map))
+    if (! nswe_check(map))
     {
         printf("Invalid Map !\n");
         return (1);
