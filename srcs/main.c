@@ -1,5 +1,5 @@
 #include "cub3d.h"
-
+ 
 int ft_check_2(char *s1, char *s2)
 {
     int i;
@@ -53,12 +53,15 @@ int main(int argc, char **argv)
         return (0);
     }
     printf("%s\n", s_line);
-    map = ft_split(s_line, '\n');
+    map = ft_slip(s_line);
+    int i = 0;
+    while (map[i])
+        printf("%s\n", map[i++]);
     if (! nswe_check(map))
     {
         printf("Invalid Map !\n");
         return (1);
     }
-    
+
     return (0);
 }

@@ -17,7 +17,7 @@ int	separator123(char *str)
 	if ((*str == '|' && *(str + 1) == '|') || (*str == '&' && *(str
 				+ 1) == '&'))
 		return (2);
-	if (*str == '|' || *str == '<' || *str == '>' || *str == '&' || *str == '$')
+	if (*str == '\n')
 		return (1);
 	return (0);
 }
