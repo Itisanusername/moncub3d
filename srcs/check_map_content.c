@@ -81,7 +81,7 @@ int nswe_check(char **tab)
             c++;
         i++;
     }
-    if (!n || !s || !w || !e || !f || !c)
+    if (n != 1 || s != 1  || w != 1 || e != 1|| f != 1 || c != 1 )
         return (0);
     return (1);
 }
