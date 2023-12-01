@@ -31,6 +31,8 @@ int	ft_atoi(const char *theString)
 			return (-1);
 		i++;
 	}
+	if (theString[i] < '0' || theString[i] > '9')
+		return (-1);
 	while (theString[i] >= '0' && theString[i] <= '9')
 	{
 		value = value * 10 + (theString[i] - 48);

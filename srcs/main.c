@@ -59,5 +59,6 @@ int main(int argc, char **argv)
         printf("Invalid Map !\n");
         return (1);
     }
+    
     return (0);
 }
