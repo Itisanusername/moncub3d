@@ -1,6 +1,5 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-#endif
 
 # include <stdio.h>
 # include "../minilibx-linux/mlx.h"
@@ -13,8 +12,8 @@ typedef struct s_map
 	char        *SO;
 	char        *WE;
 	char        *EA;
-    int         *F[3];
-    int         *C[3];
+    int         *F;
+    int         *C;
     char        **map;
 }				t_map;
 
@@ -27,5 +26,11 @@ int nswe_check(char **tab);
 
 void    free_tab(char **tab);
 
+t_map *ft_put_in_struct(char **map);
 
-int    check_wall(char **tab)
+void print_struct(t_map map);
+
+
+int    check_wall(char **tab);
+
+#endif

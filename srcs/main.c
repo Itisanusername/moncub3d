@@ -56,8 +56,9 @@ int main(int argc, char **argv)
 {
     char *s_line;
     char **tab_map;
-    t_map map;
+    t_map *map;
 
+    (void)map;
     if (argc != 2 || (argc == 2 && (!argv[1] || !*argv[1])))
     {
         printf("wrong\n");
@@ -74,7 +75,6 @@ int main(int argc, char **argv)
         printf("STRIKE");
         return (0);
     }
-    printf("%s\n", s_line);
     tab_map = ft_split(s_line, '\n');
     if (!nswe_check(tab_map))
     {
@@ -84,5 +84,8 @@ int main(int argc, char **argv)
     free_tab(tab_map);
     tab_map = ft_slip(s_line);
     map = ft_put_in_struct(tab_map);
+
+    print_struct(*map);
+    
     return (0);
 }
