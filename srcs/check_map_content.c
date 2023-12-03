@@ -47,7 +47,6 @@ int valid_value(char *str)
                 flag++;
             str[i] = '\0';
         }
-        printf("{%c} [%d] %d %d \n", str[start], ft_isdigit(str[start]), i, start);
         if (ft_atoi(str+start) > 255 || ft_atoi(str+start) < 0 || !ft_isdigit(str[start]))
             return (0);
         if (!flag)

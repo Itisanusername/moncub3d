@@ -31,10 +31,32 @@ int ft_check_name(char *str)
     return (1);
 }
 
+char **ft_replace(char **map)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (map[i])
+    {
+        j = 0;
+        while(map[i][j])
+        {
+            if(map[i][j] == '\n')
+                map[i][j] = 0;
+            j++;
+        }
+        i++;
+    }
+    return (map);
+}
+
 int main(int argc, char **argv)
 {
     char *s_line;
-    char **map;
+    char **tab_map;
+    t_map map;
 
     if (argc != 2 || (argc == 2 && (!argv[1] || !*argv[1])))
     {
@@ -53,15 +75,14 @@ int main(int argc, char **argv)
         return (0);
     }
     printf("%s\n", s_line);
-    map = ft_slip(s_line);
-    int i = 0;
-    while (map[i])
-        printf("%s\n", map[i++]);
-    if (! nswe_check(map))
+    tab_map = ft_split(s_line, '\n');
+    if (!nswe_check(tab_map))
     {
-        printf("Invalid Map !\n");
+        printf("Invalid tab_Map !\n");
         return (1);
     }
-
+    free_tab(tab_map);
+    tab_map = ft_slip(s_line);
+    map = ft_put_in_struct(tab_map);
     return (0);
 }
