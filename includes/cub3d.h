@@ -12,8 +12,8 @@ typedef struct s_map
 	char        *SO;
 	char        *WE;
 	char        *EA;
-    int         *F;
-    int         *C;
+    int         F[3];
+    int         C[3];
     char        **map;
 }				t_map;
 
@@ -30,6 +30,7 @@ t_map *ft_put_in_struct(char **map);
 
 void print_struct(t_map map);
 
+char **ft_spliit(char *str, char c);
 
 int    check_wall(char **tab);
 

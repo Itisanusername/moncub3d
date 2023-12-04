@@ -82,7 +82,7 @@ int main(int argc, char **argv)
         return (1);
     }
     free_tab(tab_map);
-    tab_map = ft_slip(s_line);
+    tab_map = ft_spliit(s_line, '\n');
     map = ft_put_in_struct(tab_map);
 
     print_struct(*map);
