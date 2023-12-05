@@ -84,7 +84,8 @@ int main(int argc, char **argv)
     tab_map = ft_spliit(s_line, '\n');
     map = struct_init();
     map = ft_put_in_struct(tab_map);
-    
+    if (check_wall(map->map))
+        return (1);
     print_struct(*map);
     freestruc(*&map);
     free_tab(tab_map);

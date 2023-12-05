@@ -15,6 +15,9 @@ typedef struct s_map
     int         *F;
     int         *C;
     char        **map;
+	int			start_line;
+    int			start_colonne;
+    char		start_direction;
 }				t_map;
 
 

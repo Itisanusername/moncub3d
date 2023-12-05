@@ -45,18 +45,16 @@ void print_struct(t_map map)
 
 void    freestruc(t_map *map)
 {
-    // int i;
+    int i;
 
-    // i = 0;
+    i = 0;
     free(map->NO);
     free(map->SO);
     free(map->WE);
     free(map->EA);
-    // while (i < 3)
-    // {
-    //     free(&map->F[i]);
-    //     i++;
-    // }
+    while (map->map[i])
+        free(map->map[i++]);
+    free(map->map);
     free(map->F);
     // i = 0;
     // while (i < 3)
