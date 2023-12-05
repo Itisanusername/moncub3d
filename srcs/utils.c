@@ -74,7 +74,7 @@ int ft_strlenn(char *str)
     while (str[i])
     {
         if (str[i] == '\t')
-            count += 3;
+            count += 4;
         count++;
         i++;
     }
@@ -98,11 +98,15 @@ char	*ft_strduup(char *source)
 		return (NULL);
 	while (source[i] != '\0' && source[i] != '\n')
 	{
-        while (source[i] == '\t' && j < 4)
+        if (source[i] == '\t')
         {
-            dup[i+k] = ' ';
-            j++;
-            k++;
+            j = -1;
+            while (++j < 4)
+            {
+                dup[i+k] = ' ';
+                k++;
+            }
+            i++;
         }
 		dup[i+k] = source[i];
 		i++;
