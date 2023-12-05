@@ -26,7 +26,7 @@ void *struct_init()
 void print_struct(t_map map)
 {
     int i;
-
+    
     i = 0;
     printf("%s\n", map.NO);
     printf("%s\n", map.SO);
@@ -62,22 +62,49 @@ void    freestruc(t_map *map)
     free(map->C);
 }
 
-char	*ft_strduup(const char *source)
+int ft_strlenn(char *str)
+{
+    int i;
+    int count;
+
+    count = 0;
+    i = 0;
+    if (!str)
+        return (0);
+    while (str[i])
+    {
+        if (str[i] == '\t')
+            count += 3;
+        count++;
+        i++;
+    }
+    return (count);
+}
+
+char	*ft_strduup(char *source)
 {
 	int		size;
 	int		i;
 	char	*dup;
+    int     j;
+    int     k;
 
-	size = ft_strlen(source);
+    k = 0;
+    j = 0;
+	size = ft_strlenn(source);
 	i = 0;
 	dup = ft_calloc(sizeof (char), size + 1);
 	if (!(dup))
-	{
 		return (NULL);
-	}
 	while (source[i] != '\0' && source[i] != '\n')
 	{
-		dup[i] = source[i];
+        while (source[i] == '\t' && j < 4)
+        {
+            dup[i+k] = ' ';
+            j++;
+            k++;
+        }
+		dup[i+k] = source[i];
 		i++;
 	}
 	return (dup);

@@ -40,6 +40,6 @@ char **ft_spliit(char *str, char c);
 
 int    check_wall(char **tab);
 
-char	*ft_strduup(const char *source);
+char	*ft_strduup(char *source);
 
 #endif

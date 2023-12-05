@@ -99,7 +99,6 @@ int map_len(char **map)
     i = 0;
     while (map[i])
         i++;
-    printf("%d\n", i);
     return (i);
 }
 
