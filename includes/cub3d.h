@@ -12,8 +12,8 @@ typedef struct s_map
 	char        *SO;
 	char        *WE;
 	char        *EA;
-    int         F[3];
-    int         C[3];
+    int         *F;
+    int         *C;
     char        **map;
 }				t_map;
 
@@ -23,6 +23,9 @@ char *ft_extract_file(char *path);
 
 int nswe_check(char **tab);
 
+void    freestruc(t_map *map);
+
+void *struct_init();
 
 void    free_tab(char **tab);
 
@@ -33,5 +36,7 @@ void print_struct(t_map map);
 char **ft_spliit(char *str, char c);
 
 int    check_wall(char **tab);
+
+char	*ft_strduup(const char *source);
 
 #endif

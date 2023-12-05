@@ -15,21 +15,17 @@ char *put_str(char *str)
     return (str+i);
 }
 
-void put_int_tab(char *str, int tab[3])
+int *put_int_tab(char *str, int *tab)
 {
     int i;
     int j;
     int flag;
     int start;
-    // int *tab;
 
     flag = 0;
     j = 0;
     start = 0;
     i = 0;
-    // tab = ft_calloc(3, sizeof(int*));
-    // if (!tab)
-    //     return (NULL);
     while(str[i] && ft_isspace(str[i]))
         i++;
     while (str[i] && !flag)
@@ -44,15 +40,11 @@ void put_int_tab(char *str, int tab[3])
             str[i] = '\0';
         }
         if (ft_isdigit(str[start]))
-        {
-            tab[j] = ft_atoi(str+start);
-            ft_printf(1, "{%d}{%d}\n", j, tab[j]);
-            j++;
-        }
+            tab[j++] = ft_atoi(str+start);
         if (!flag)
             i++;
     }
-    // return (tab);
+    return (tab);
 }
 
 
@@ -72,9 +64,9 @@ t_map *pars(char *str, t_map *map)
     else if (str[i] == 'E' && str[i+1] == 'A')
         map->EA = ft_strdup(put_str(str+2));
     else if (str[i] == 'F')
-        put_int_tab(str+1, map->F);
+        map->F = put_int_tab(str+1, map->F);
     else if (str[i] == 'C')
-        put_int_tab(str+1, map->C);
+        map->C = put_int_tab(str+1, map->C);
     return (map);
 }
 
@@ -100,34 +92,41 @@ int check_pars(char *str)
     return (0);
 }
 
+int map_len(char **map)
+{
+    int i;
+
+    i = 0;
+    while (map[i])
+        i++;
+    printf("%d\n", i);
+    return (i);
+}
+
 t_map *ft_put_in_struct(char **map)
 {
     int i;
+    int j;
     t_map *s_map;
 
-    s_map = ft_calloc(1, 1);
-    // s_map->F = ft_calloc(3, sizeof(int*));
-    // s_map->C = ft_calloc(3, sizeof(int*));
+    s_map = struct_init();
     i = 0;
+    j = 0;
     while (map[i])
     {
         if (check_pars(map[i]))
-        {
-            ft_printf(2, ">>>>>>>>>>>>>>>>>%p|%d|>%s\n", map[i]);
             s_map = pars(map[i], *&s_map);
-            ft_printf(2, "%p|%d|>%s\n", s_map , i, s_map->NO);
-
-        }
-        // if (s_map->NO)
-        //     ft_printf(2, ">>>>>>>>>>>>>>>>>||||>%s\n", s_map->NO);
-        // if (s_map->SO)
-        //     ft_printf(2, ">>>>>>>>>>>>>>>>>||||>%s\n", s_map->SO);
-        // if (s_map->WE)
-        //     ft_printf(2, ">>>>>>>>>>>>>>>>>||||>%s\n", s_map->WE);
-        // if (s_map->EA)
-        //     ft_printf(2, ">>>>>>>>>>>>>>>>>||||>%s\n", s_map->EA);
-
         i++;
+    }
+    i--;
+    while (i > 0 && map[i][0] != '\n')
+        i--;
+    i++;
+    s_map->map = ft_calloc(sizeof (char *), (map_len(map+i)+1));
+    while (map[i+j])
+    {
+        s_map->map[j] = ft_strduup(map[i+j]);
+        j++;
     }
     return (s_map);
 }

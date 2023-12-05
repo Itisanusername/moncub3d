@@ -58,7 +58,6 @@ int main(int argc, char **argv)
     char **tab_map;
     t_map *map;
 
-    (void)map;
     if (argc != 2 || (argc == 2 && (!argv[1] || !*argv[1])))
     {
         printf("wrong\n");
@@ -83,9 +82,12 @@ int main(int argc, char **argv)
     }
     free_tab(tab_map);
     tab_map = ft_spliit(s_line, '\n');
+    map = struct_init();
     map = ft_put_in_struct(tab_map);
-
-    print_struct(*map);
     
+    print_struct(*map);
+    freestruc(*&map);
+    free_tab(tab_map);
+    free(s_line);
     return (0);
 }
