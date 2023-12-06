@@ -32,6 +32,9 @@ void print_struct(t_map map)
     printf("%s\n", map.SO);
     printf("%s\n", map.WE);
     printf("%s\n", map.EA);
+    printf("start line%d\n", map.start_line);
+    printf("start colone%d\n", map.start_colonne);
+    printf("start direction%c\n", map.start_direction);
 
     while (i < 3)
         printf("%d\n", map.F[i++]);
