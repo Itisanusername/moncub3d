@@ -106,6 +106,7 @@ char	*ft_strduup(char *source)
                 dup[i+k] = ' ';
                 k++;
             }
+            k--;
             i++;
         }
 		dup[i+k] = source[i];
